@@ -2288,8 +2288,11 @@ def verify_release_manifest(sums_bytes: bytes, minisig_text: str,
 # checksum, and SHA256SUMS.minisig signing that list. From 0.24.3-beta there is
 # also wifi-optimizer.zip, for installing from Decky; SHA256SUMS lists it too,
 # and the updater only ever looks up the tarball's line.
-RELEASES_API = "https://api.github.com/repos/ArcadaLabs-Jason/WifiOptimizer/releases"
-RELEASE_DOWNLOAD = "https://github.com/ArcadaLabs-Jason/WifiOptimizer/releases/download"
+# nroj95 fork, 2026-11-20: updates are looked up in this fork, which publishes no releases, so the
+# in-plugin updater never offers one that would overwrite local patches. Upstream changes are merged
+# by hand from the "original" remote (ArcadaLabs-Jason/WifiOptimizer) instead.
+RELEASES_API = "https://api.github.com/repos/nroj95/WifiOptimizer/releases"
+RELEASE_DOWNLOAD = "https://github.com/nroj95/WifiOptimizer/releases/download"
 # A page of releases, notes included, is tens of kilobytes. Anything past
 # this is not GitHub answering the question we asked.
 RELEASES_LIST_MAX = 4 * 1024 * 1024
