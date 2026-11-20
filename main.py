@@ -7826,7 +7826,9 @@ class Plugin:
     # measured it on (rtw88 on the LCD has an open failure to power back on
     # after sleep) is left alone. The lock-weaker notice still offers Move
     # everywhere with the panel open.
-    _WAKE_MOVE_DRIVERS = ("ath11k",)
+    # nroj95 fork, 2026-11-20: mt7921e (MediaTek MT7921/MT7922, Legion Go S) added for testing on a
+    # Legion Go S (SteamOS 3.9.5). Remove it again if WiFi fails to come back after a wake move.
+    _WAKE_MOVE_DRIVERS = ("ath11k", "mt7921e")
 
     def _no_wake_move_driver(self, driver) -> bool:
         """Whether driver (the settings' "driver", or the module behind the
